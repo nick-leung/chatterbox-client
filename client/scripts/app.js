@@ -18,26 +18,32 @@ var handleData = function (data) {
     }
   }
   app.handleUsernameClick();
+
+  $("#target").submit(function(event){
+    app.send(message);
+    event.preventDefault();
+  });
 };
 var app = {
   server: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
   init: function () {
     app.fetch(message);
     console.log('first');
-    //app.handleUsernameClick();
+    app.handleUsernameClick();
+    app.handleSubmit();
     // $('.username').click(function () {
     //     this.handleUsernameClick();
     // });
   },
-  send: function (message) {
+  send: function (data) {
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
       url: this.server,
       type: 'POST',
-      data: message, // JSON.stringify(message),
+      data: data, //JSON.stringify(message), 
       contentType: 'application/json',
       success: function (data) {
-        handleData(data);
+        //handleData(data);
         console.log('chatterbox: Message sent');
       },
       error: function (data) {
@@ -89,7 +95,26 @@ var app = {
       var clickData = $(this);
       console.log(clickData[0].text);
     });
+  },
+  handleSubmit: function (event) {
+    // $('div').on('click', '#send', function () {
+    //   var clickData = $(this);
+    //   console.log(clickData[0].text);
+    //   app.send(message);
+    //  event.preventDefault();
+    // });
+    
   }
 };
-
 app.init();
+// $('div').on('click', '#send', function (event) {
+//       var clickData = $(this);
+//       console.log(clickData[0].text);
+//       app.send(message);
+//      event.preventDefault();
+//     });
+  // $("#target").submit(function(event){
+  //   event.preventDefault();
+  // })
+//app.init();
+//app.send(message);

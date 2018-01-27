@@ -27,10 +27,18 @@
     <div id="main">
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! -->
-      <p>Room</p>
-      <select id="roomSelect">
-        <!--<option value="volvo">Volvo</option>-->
-      </select>
+      <p>Room:</p>
+      <select id="roomSelect"></select>
+      <br><br>
+      <!--<input id="message" type="text" value="">
+      <input id="send" type="submit" value="Submit">-->
+      <form id="target" action="#" method="POST"> 
+        <div>
+          <!--<label for="example">Let's submit some text</label>-->
+          <input id="message" type="text" name="text" value="">
+          <input id="send" type="submit" value="Submit">
+        </div>
+      </form>
     </div>
     <div id="chats"></div>
   </body>
